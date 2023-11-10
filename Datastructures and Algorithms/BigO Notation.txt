@@ -1,0 +1,49 @@
+Big O is a notation used to describe the computational complexity of an algorithm. 
+
+Asymptotic notation is a mathematical tool that calculates the required time in terms of input size and does not require the execution of the code.
+
+The computational complexity of an algorithm is split into two parts: time complexity and space complexity. 
+    The time complexity of an algorithm is the amount of time the algorithm needs to run relative to the input size. 
+    The space complexity of an algorithm is the amount of memory allocated by the algorithm when run relative to the input size.
+
+
+Complexity is described by a function of variables that can change with the input. The most common variable is O(n), 
+which usually describes the length of an input array or string. This function is wrapped by a capital O. 
+
+Here are some example complexities:
+O(n)
+O(n2) // n to the power of 2
+O(2n) // 2 to the power of n
+O(logn)
+O(n.m) // n times m
+O(n+m)
+
+These functions describe how the amount of operations/memory needed by the algorithm grows as the arguments tend to infinity. 
+Because the variables are tending to infinity, constants are always ignored. That means that 
+O(9999999n)=O(8n)=O(n)=O(n/500)=O(n)
+
+Being able to analyze an algorithm and derive its time and space complexity is a crucial skill.
+
+The best complexity possible is O(1), called "constant time" or "constant space". 
+It means that the algorithm ALWAYS uses the same amount of resources, regardless of the input.
+
+Note that a constant time complexity doesn't necessarily mean that an algorithm is fast O(5000000)=O(1)), 
+it just means that its runtime is independent of the input size.
+
+When talking about complexity, there are normally three cases:
+    Best case scenario
+    Average case
+    Worst case scenario
+
+Logarithmic time
+
+A logarithm is the inverse operation to exponents. The time complexity O(logn) is called logarithmic time and is extremely fast. 
+A common time complexity is O(n⋅logn), which is fast for most problems and also the time complexity of efficient sorting algorithms.
+Typically, the base of the logarithm will be 2. This means that if your input is size n, then the algorithm will perform x operations, where 
+2 power x = n. However, the base of the logarithm doesn't actually matter for big O, since all logarithms are related by a constant factor.
+O(logn) means that somewhere in your algorithm, the input is being reduced by a percentage at every step. 
+
+A good example of this is binary search, which is a searching algorithm that runs in O(logn) time. 
+With binary search, we initially consider the entire input (n elements). After the first step, we only consider n / 2 elements. 
+After the second step, we only consider n / 4 elements, and so on. 
+At each step, we are reducing our search space by 50%, which gives us a logarithmic time complexity.

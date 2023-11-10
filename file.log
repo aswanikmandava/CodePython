@@ -1,0 +1,5 @@
+2023-08-02 17:54:14,128:DEBUG:root:Debug message
+2023-08-02 17:54:14,128:INFO:root:Info message
+2023-08-02 17:54:14,128:WARNING:root:Warning message
+2023-08-02 17:54:14,128:ERROR:root:Error message
+2023-08-02 17:54:14,128:CRITICAL:root:Critical message

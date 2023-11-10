@@ -1,0 +1,3 @@
+Hostname,Mgmt_IP,Ping?
+name1,google.com,YES
+name2,3.3.4.5,NO
