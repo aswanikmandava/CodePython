@@ -36,7 +36,29 @@ http_handle_format = logging.Formatter('%(levelname)s - %(message)s - %(asctime)
 
 # Assign formatters to handlers
 stream_handle.setFormatter(stream_handle_format)
-http_handle.setFormatter(http_handle_format) 
+http_handle.setFormatter(http_handle_format)
+
+# Filters are simple conditions that determine if an emitted LogRecord can be published to the destination. 
+# Think of it as logging middleware which decides whether the event (LogRecord) should be forwarded to the destination.
+
+# To define a custom log filter
+#   Inherit from logging.Filter
+#   Create a new class that inherits from the logging.Filter class.
+#   Override the filter() method: Implement the filter(self, record) method, which takes a LogRecord object as input. 
+#   This method should return True if the record should be processed, and False otherwise.
+
+class MyCustomFilter(logging.Filter):
+    def filter(self, record):
+        # Filter out records with level below WARNING
+        if record.levelno < logging.WARNING:
+            return False
+        # Filter out records from a specific logger
+        if record.name == 'my_module':
+            return False
+        return True
+
+# Add the custom filter to the logger
+logger.addFilter(MyCustomFilter())
 
 # Add handlers to the logger
 logger.addHandler(stream_handle)
