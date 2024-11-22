@@ -30,17 +30,17 @@ with open(hosts_file, "rU") as rows:
             # Connect to remote server port
             sock_obj.connect((host, port))
             # stop sending and receiving on this connection
-			sock_obj.shutdown(socket.SHUT_RDWR)
+            sock_obj.shutdown(socket.SHUT_RDWR)
             # release connection resources
-			sock_obj.close()
-            print "Port %s is open on %s" %(port, host)
+            sock_obj.close()
+            print("Port %s is open on %s" %(port, host))
             fh.write(",YES\n")
         except socket.error, msg:
-            print "Socket error on %s: %s" % (host, msg)
+            print("Socket error on %s: %s" % (host, msg))
             fh.write(",ERROR\n")
             continue
         except Exception as e:
-            print "Socket exception on %s: %s" % (host, e)
+            print("Socket exception on %s: %s" % (host, e))
             fh.write(",ERROR\n")
             continue
 

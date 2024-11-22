@@ -22,7 +22,7 @@ try:
         print("No such domain exists: %s" % lookup_host)
     except dns.resolver.Timeout:
         print("DNS request to %s has timed out" % lookup_host)
-    except dns.exception.DNSException, e:
+    except dns.exception.DNSException as e:
         print("Exception occurred: %s" % e)
-except Exception, e:
+except Exception as e:
     print("Exception occurred: %s" % e)

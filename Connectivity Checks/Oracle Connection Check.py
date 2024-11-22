@@ -11,7 +11,7 @@ try:
     con = cx_Oracle.connect("%s/%s@%s:%s/%s" %(ORA_USER, ORA_PWD, ORA_HOST, ORA_PORT, ORA_SERVICE))
     print("Oracle Version: %s" %con.version)
     con.close()
-except Exception, err:
+except Exception as err:
     print("Exception occurred: %s" %err)
 
 

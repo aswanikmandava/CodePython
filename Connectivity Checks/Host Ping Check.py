@@ -20,14 +20,14 @@ with open(hosts_file, "rU") as rows:
         fh.write(host)
         try:
             # send 1 icmp packet with 1 sec as timeout	
-	    ping_cmd = ['ping', '-c', '1', '-W', '1', host]
-	    # Interact with process: Send data to stdin. Read data from stdout and stderr, until end-of-file is reached.
-	    ping_obj = subprocess.Popen(ping_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, bufsize=1)
-	    # Uncomment below lines to see ping output
+            ping_cmd = ['ping', '-c', '1', '-W', '1', host]
+            # Interact with process: Send data to stdin. Read data from stdout and stderr, until end-of-file is reached.
+            ping_obj = subprocess.Popen(ping_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, bufsize=1)
+            # Uncomment below lines to see ping output
 
-	    #with ping_obj.stdout:
-	    #	for line in iter(ping_obj.stdout.readline, b''):
-	    #	    print line
+            #with ping_obj.stdout:
+            #    for line in iter(ping_obj.stdout.readline, b''):
+            #       print line
 
             # Wait for process to terminate. 
             # Return code:
@@ -36,10 +36,10 @@ with open(hosts_file, "rU") as rows:
             ping_status = ping_obj.wait()
  
             # print "Ping result: %d" %ping_status
-	    if ping_status == 0:
-		fh.write(",YES\n")
-	    else:
-		fh.write(",NO\n")	
+            if ping_status == 0:
+                fh.write(",YES\n")
+            else:
+                fh.write(",NO\n")	
         except subprocess.CalledProcessError, msg:
             # print "Exception for %s: %s" % (host, msg)
             fh.write(",ERROR\n")
@@ -48,7 +48,7 @@ with open(hosts_file, "rU") as rows:
             # print "Exception - OSError for %s: %s" % (host, msg)
             fh.write(",ERROR\n")
             continue
-		except Exception, msg:
+        except Exception, msg:
             # print "Exception for %s: %s" % (host, msg)
             fh.write(",ERROR\n")
             continue

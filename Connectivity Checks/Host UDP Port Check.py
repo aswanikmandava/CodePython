@@ -27,18 +27,18 @@ with open(hosts_file, "rU") as rows:
         sock_obj.settimeout(1)
 
         try:
-        # Connect to remote server port
-	    # Send a UDP ping packet and see if the target received it
+            # Connect to remote server port
+            # Send a UDP ping packet and see if the target received it
             # If no service is listening on this port, you should get an ICMP error packet
             sock_obj.sendto('PING', (host, port))
-        print "Port %s is open on %s" %(port, host)
+            print("Port %s is open on %s" %(port, host))
             fh.write(",YES\n")
         except socket.error, msg:
-            print "Socket error on %s: %s" % (host, msg)
+            print("Socket error on %s: %s" % (host, msg))
             fh.write(",ERROR\n")
             continue
         except Exception as e:
-            print "Socket exception on %s: %s" % (host, e)
+            print("Socket exception on %s: %s" % (host, e))
             fh.write(",ERROR\n")
             continue
 

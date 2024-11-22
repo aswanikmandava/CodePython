@@ -23,7 +23,7 @@ with open(hosts_file, "rU") as rows:
         try:
             ip = socket.gethostbyname(host)
             fh.write("," + ip + ",")
-        except socket.error, msg:
+        except socket.error as msg:
             # print "DNS lookup failed for %s: %s" % (host, msg)
             fh.write(",NO,NO\n")
             continue
@@ -33,7 +33,7 @@ with open(hosts_file, "rU") as rows:
         try:
             hostname = socket.gethostbyaddr(ip)
             fh.write(hostname[0] + "\n")
-        except socket.error, msg:
+        except socket.error as msg:
             # print "Reverse DNS lookup failed for %s: %s" % (ip, msg)
             fh.write("NO\n")
             continue

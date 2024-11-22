@@ -13,6 +13,6 @@ try:
     con = cx_Oracle.connect(ORA_USER, ORA_PWD,dsn_tns)
     print("Oracle Version: %s" %con.version)
     con.close()
-except Exception, err:
-    print dsn_tns
+except Exception as err:
+    print(dsn_tns)
     print("Exception occurred: %s" %err)

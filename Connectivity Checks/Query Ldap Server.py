@@ -38,12 +38,12 @@ try:
         print("Closing connection...")
         l.unbind_s()
         print("Closed connection !!!")
-    except ldap.LDAPError, e:
+    except ldap.LDAPError as e:
         print("Error: %s" %e)
 
     # end timer
     end_time = time.time()
     res_time = (end_time - start_time)
     print("Response time: %.3f sec" %res_time)
-except ldap.LDAPError, e:
+except ldap.LDAPError as e:
     print("Connection Error: %s" %e)
