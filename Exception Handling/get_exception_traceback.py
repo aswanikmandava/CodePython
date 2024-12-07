@@ -24,3 +24,7 @@ if __name__ == '__main__':
         # get traceback and format it as a string
         traceback_str = traceback.format_exc()
         print(f"Caught !!! {traceback_str}")
+
+        # you can get stack trace using logger.exception and logger.error methods
+        # logger.exception("Caught error")
+        # logger.error("Caught error", exc_info=True)
