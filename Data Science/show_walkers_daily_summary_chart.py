@@ -63,11 +63,37 @@ def get_lists_for_walkers_steps(data):
         steps_list.append(value)
     return walkers_list, steps_list
 
+def get_list_min_elememt_index(input_list):
+    """
+    Returns the minimum element in a given list of integers
+    """
+    min_index = 0
+    for idx in range(len(input_list)):
+        if input_list[idx] < input_list[min_index]:
+            min_index = idx
+    return min_index
+
+def sort_walkers_steps_list(walkers_list, steps_list):
+    sorted_walkers = list()
+    sorted_steps = list()
+    for idx in range(len(steps_list)):
+        min_index = get_list_min_elememt_index(steps_list)
+        sorted_walkers.append(walkers_list[min_index])
+        sorted_steps.append(steps_list[min_index])
+        # set the value to infinity so that next minimum value can be found in next iteration
+        steps_list[min_index] = float("inf")
+    return sorted_walkers, sorted_steps
+
+def plot_walkers_by_steps(walkers, steps):
+    pyplot.bar(walkers, steps)
+
 def main():
     csv_filename = "walk_steps.csv"
     hourly_data = get_data_dict(csv_filename)
     daily_data = get_daily_from_hourly(hourly_data)
     weekly_data = reduce_daily_to_weekly(daily_data)
     walkers, steps = get_lists_for_walkers_steps(weekly_data)
+    s_walkers, s_steps = sort_walkers_steps_list(walkers, steps)
+    plot_walkers_by_steps(s_walkers, s_steps)
 
 main()
