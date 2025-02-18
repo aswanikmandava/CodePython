@@ -2,24 +2,26 @@
 
 # in place merge
 # time complexity: O(m(n+m))
-def merge_lists(lst1, lst2):
-    ind1 = 0  # Creating 2 new variables to track the 'current index'
-    ind2 = 0
-    # While both indeces are less than the length of their lists
-    while ind1 < len(lst1) and ind2 < len(lst2):
-        # If the current element of list1 is greater
-        # than the current element of list2
-        if(lst1[ind1] > lst2[ind2]):
-            # insert list2's current index to list1
-            lst1.insert(ind1, lst2[ind2])
-            ind1 += 1  # increment indices
-            ind2 += 1
+def merge_lists(nums1, nums2):
+    p1 = 0
+    p2 = 0
+    
+    # Traverse both lists until the end of nums1 or nums2 is reached
+    while p1 < len(nums1) and p2 < len(nums2):
+        # If the value at p1 is greater than the value at p2, place the value at p2 into p1 and increment p1 and p2.
+        if(nums1[p1] > nums2[p2]):
+            nums1.insert(p1, nums2[p2])
+            p1 += 1
+            p2 += 1
+        # Otherwise, increment p1
         else:
-            ind1 += 1
+            p1 += 1
 
-    if ind2 < len(lst2):  # Append whatever is left of list2 to list1
-        lst1.extend(lst2[ind2:])
-    return lst1
+    # Append the remaining elements of nums2 into nums1
+    if p2 < len(nums2):
+        nums1.extend(nums2[p2:])
+    
+    return nums1
 
 # using a separate list
 # time complexity: O(n+m)
