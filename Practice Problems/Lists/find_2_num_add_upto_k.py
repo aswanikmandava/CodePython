@@ -16,20 +16,28 @@ def find_sum(lst, k):
 # n-a0 and so on for every a, i.e., an until one is found.
 
 # Time complexity: O(nlogn)
-def binary_search(lst, item):
-    first = 0
-    last = len(lst) - 1
+def binary_search(nums, ele):
     found = False
-    while first <= last and not found:
+    first = 0
+    last = len(nums) - 1
+    index = -1
+    while ((first < last) and not found):
+        # find the mid index
         mid = (first + last) // 2
-        if lst[mid] == item:
-            found = mid
+
+        if nums[mid] == ele:  # given element is in middle index
+            index = mid
+            found = True
         else:
-            if item < lst[mid]:
-                last = mid - 1
-            else:
+            if ele > nums[mid]: # given element is greator than mid element
                 first = mid + 1
-    return found
+            else: # given element is less than mid element
+                last = mid - 1
+
+    if found:
+        return index
+    else:
+        return -1
 
 isum = 45
 lst = [1, 3, 10, 20, 25]
@@ -70,23 +78,32 @@ def find_sum(lst, n):
 # The linear scan takes O(n) and sort takes O(nlogn). 
 # The time complexity becomes O(nlogn)+O(n) because the sort and the linear scan are done one after the other. 
 # The overall would be O(nlogn) in the worst case.
-def find_sum(lst, k):
-    lst_len = len(lst)
-    first = 0   # index to the beginning of list
-    last = lst_len - 1   # index to the end of list
-    lst.sort()  # sort the list
-    sum = 0
-    found = False
-    while (first != last and not found):
-        sum = lst[first] + lst[last]
-        if (sum < k):
-            first += 1  # move forward
-        elif (sum > k):
-            last -= 1   # move backwards
-        else:
-            found = True
-            return [lst[first], lst[last]]
-    return found
+def find_sum(nums, k):
+    """
+    Sort the input list.
+    Initialize two pointers, the left pointing to the beginning of the list and the right pointing to the end of the list.
+    While left is less than right:
+        Calculate the sum of elements at left and right.
+        If the sum is less than k, increment the left pointer.
+        If the sum is greater than k, decrement the right pointer.
+        If the sum is equal to k, append the elements at left and right to the result list and exit the loop.
+        Return the result list containing elements that sum up to k.
+    """
+    # sort the list
+    nums.sort()
+    # init 2 pointers
+    left = 0
+    right = len(nums) - 1
+    while (left < right):
+      sum = nums[left] + nums[right]
+      if sum < k: # move the first
+        left += 1
+      if sum > k:
+        right -= 1
+      if sum == k:
+        return [nums[left], nums[right]]
+        
+    return []
     
 
 
