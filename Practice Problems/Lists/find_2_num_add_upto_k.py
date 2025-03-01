@@ -39,14 +39,14 @@ def binary_search(nums, ele):
     else:
         return -1
 
-isum = 45
+isum = 23
 lst = [1, 3, 10, 20, 25]
 for i in lst:
     found = binary_search(lst, (isum - i))
-    print(f"{i}: search for {(isum - i)} result: {found}")
-    if found:
-        print(f"Items {i} and {lst[found]} add upto {isum}")
-        break
+    print(f"{i}: search for {(isum - i)} completed; found index: {found}")
+    if found != -1:
+      print(f"*** PAIR FOUND *** Items {i} and {lst[found]} add upto {isum}")
+      break
 
 # 3) Dictionary
 # Time complexity: O(n)
